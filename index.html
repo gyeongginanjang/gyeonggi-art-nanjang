@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>경기 아트 난장 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #1a1a18;
+    --cream: #f5f0e8;
+    --orange: #e8490a;
+    --orange-light: #f4794a;
+    --yellow: #f7c842;
+    --green: #2d6a40;
+    --green-light: #4a9e63;
+    --white: #ffffff;
+    --gray: #888780;
+    --gray-light: #e8e5de;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 18px;
+    color: var(--yellow);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    bottom: -60px;
+    right: -20px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 280px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 40px;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(64px, 10vw, 140px);
+    color: var(--cream);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 .accent { color: var(--yellow); }
+
+  .hero-sub {
+    font-size: clamp(14px, 2vw, 18px);
+    color: rgba(245, 240, 232, 0.55);
+    margin-top: 40px;
+    max-width: 560px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-info {
+    margin-top: 60px;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .hero-info-item .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .hero-info-item .value {
+    font-size: 16px;
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .hero-cta {
+    margin-top: 60px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: white;
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  /* SECTIONS COMMON */
+  section { padding: 100px 48px; }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(26,26,24,0.12);
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #3a3a38;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(26,26,24,0.1);
+    border: 1px solid rgba(26,26,24,0.1);
+  }
+
+  .stat-card {
+    background: var(--cream);
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 52px;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  /* BOOTHS */
+  #booths {
+    background: var(--black);
+    color: var(--cream);
+  }
+
+  #booths .section-title { color: var(--cream); }
+
+  .booths-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .booth-card {
+    background: #222220;
+    padding: 40px 32px;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .booth-card:hover { background: #2a2a28; }
+
+  .booth-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 48px;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .booth-type {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .type-art { background: rgba(232,73,10,0.2); color: var(--orange-light); }
+  .type-craft { background: rgba(247,200,66,0.2); color: var(--yellow); }
+  .type-design { background: rgba(74,158,99,0.15); color: var(--green-light); }
+
+  .booth-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .booth-desc {
+    font-size: 13px;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* PROGRAMS */
+  #programs {
+    background: var(--cream);
+  }
+
+  .programs-list {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .program-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 40px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(26,26,24,0.1);
+    transition: background 0.2s;
+  }
+
+  .program-item:first-child { border-top: 1px solid rgba(26,26,24,0.1); }
+
+  .program-time {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .program-info .program-name {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 20px;
+    color: var(--black);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .program-info .program-detail {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .program-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 2px;
+    white-space: nowrap;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-main { background: var(--orange); color: white; }
+  .badge-workshop { background: var(--black); color: var(--cream); }
+  .badge-open { background: transparent; border: 1px solid var(--black); color: var(--black); }
+
+  /* NOTICES */
+  #notices {
+    background: var(--yellow);
+    padding: 80px 48px;
+  }
+
+  .notices-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+  }
+
+  .notices-header .section-title { color: var(--black); margin-bottom: 0; }
+  .notices-header .section-tag { color: rgba(26,26,24,0.5); }
+
+  .notice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .notice-item {
+    background: rgba(255,255,255,0.6);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+
+  .notice-item:hover { background: rgba(255,255,255,0.85); }
+
+  .notice-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .notice-dot.new { background: var(--orange); }
+  .notice-dot.old { background: rgba(26,26,24,0.2); }
+
+  .notice-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    flex: 1;
+  }
+
+  .notice-date {
+    font-size: 12px;
+    color: rgba(26,26,24,0.45);
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  /* VISIT */
+  #visit {
+    background: var(--green);
+    color: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  #visit .section-tag { color: rgba(245,240,232,0.5); }
+  #visit .section-title { color: var(--cream); }
+
+  .visit-info-list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .visit-info-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .visit-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .visit-info-text .vi-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    margin-bottom: 5px;
+  }
+
+  .visit-info-text .vi-value {
+    font-size: 15px;
+    color: var(--cream);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .map-placeholder {
+    background: rgba(0,0,0,0.25);
+    border-radius: 2px;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .map-placeholder svg {
+    opacity: 0.4;
+  }
+
+  .map-placeholder span {
+    font-size: 13px;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    padding: 60px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .footer-brand .logo {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 22px;
+    color: var(--yellow);
+    margin-bottom: 12px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.8;
+    max-width: 280px;
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links .f-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--yellow); }
+
+  .footer-bottom {
+    background: var(--black);
+    padding: 20px 48px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.03em;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-tag { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .hero-info { animation-delay: 0.4s; }
+  .hero-cta { animation-delay: 0.5s; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    nav .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    #about { grid-template-columns: 1fr; gap: 48px; }
+    .booths-grid { grid-template-columns: 1fr; }
+    .program-item { grid-template-columns: 60px 1fr; }
+    .program-item .program-badge { display: none; }
+    #visit { grid-template-columns: 1fr; }
+    footer { padding: 48px 24px; }
+    .footer-bottom { padding: 16px 24px; }
+    .hero-bg-text { font-size: 140px; }
+    #notices { padding: 60px 24px; }
+    .notices-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">경기 아트 난장 2026</a>
+  <ul class="nav-links">
+    <li><a href="#about">축제소개</a></li>
+    <li><a href="#booths">부스소개</a></li>
+    <li><a href="#programs">프로그램</a></li>
+    <li><a href="#notices">공지사항</a></li>
+    <li><a href="#visit">방문안내</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg-text">난장</div>
+  <div class="hero-tag">경기도 RISE 사업 · 계원예술대학교 주최</div>
+  <h1>경기<br><span class="accent">아트</span><br>난장</h1>
+  <p class="hero-sub">예술이 일상으로 흘러드는 순간,<br>함께 만드는 창의적 예술 플랫폼이 2026년 다시 돌아옵니다.</p>
+  <div class="hero-info">
+    <div class="hero-info-item">
+      <div class="label">일시</div>
+      <div class="value">2026년 11월 (예정)</div>
+    </div>
+    <div class="hero-info-item">
+      <div class="label">장소</div>
+      <div class="value">계원예술대학교 캠퍼스</div>
+    </div>
+    <div class="hero-info-item">
+      <div class="label">입장</div>
+      <div class="value">무료</div>
+    </div>
+  </div>
+  <div class="hero-cta">
+    <a href="#programs" class="btn-primary">프로그램 보기</a>
+    <a href="#visit" class="btn-outline">방문 안내</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text">
+    <div class="section-tag">축제소개</div>
+    <h2 class="section-title">모두의<br>난장, 모두의<br>예술</h2>
+    <p>경기 아트 난장은 경기도 지역혁신중심 대학지원체계(RISE) 사업의 일환으로, 계원예술대학교·서울예술대학교·청강문화산업대학교가 컨소시엄을 이루어 개최하는 예술 축제입니다.</p>
+    <p>'난장'이라는 이름처럼 자유롭고 실험적인 형식으로, 예술이 특별한 공간이 아닌 일상 속에서 살아 숨쉬는 경험을 만들어냅니다. 아트마켓, 퍼포먼스, 워크숍, 전시가 하나의 캠퍼스 안에서 어우러집니다.</p>
+    <p>학생, 졸업생, 지역 예술가, 그리고 시민 모두가 함께 만들어가는 축제입니다.</p>
+  </div>
+  <div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">참여 부스</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">프로그램</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">참여 대학</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">무료</div>
+        <div class="stat-label">입장</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BOOTHS -->
+<section id="booths">
+  <div class="section-tag">부스소개</div>
+  <h2 class="section-title" style="color: var(--cream);">다양한 창작자들이<br>한 자리에</h2>
+  <p style="color: rgba(245,240,232,0.5); font-size: 15px; max-width: 480px; line-height: 1.8; font-weight: 300; margin-top: 16px;">예술·디자인·핸드메이드·일러스트·공예 등 창작 기반 셀러들이 참여합니다. 2026년 셀러 모집은 추후 공지될 예정입니다.</p>
+  <div class="booths-grid">
+    <div class="booth-card">
+      <div class="booth-num">01</div>
+      <span class="booth-type type-art">순수미술</span>
+      <div class="booth-title">드로잉 & 페인팅</div>
+      <p class="booth-desc">회화, 드로잉, 판화 등 전통적인 미술 매체부터 실험적 회화까지 다양한 작품을 만날 수 있습니다.</p>
+    </div>
+    <div class="booth-card">
+      <div class="booth-num">02</div>
+      <span class="booth-type type-design">디자인</span>
+      <div class="booth-title">그래픽 & 일러스트</div>
+      <p class="booth-desc">포스터, 인쇄물, 디지털 일러스트레이션 등 시각 디자인 작품과 굿즈를 선보입니다.</p>
+    </div>
+    <div class="booth-card">
+      <div class="booth-num">03</div>
+      <span class="booth-type type-craft">공예</span>
+      <div class="booth-title">핸드메이드 & 공예</div>
+      <p class="booth-desc">도예, 텍스타일, 주얼리, 가죽공예 등 손으로 직접 만든 개성 넘치는 작품들입니다.</p>
+    </div>
+    <div class="booth-card">
+      <div class="booth-num">04</div>
+      <span class="booth-type type-design">디자인</span>
+      <div class="booth-title">패션 & 텍스타일</div>
+      <p class="booth-desc">독립 패션 브랜드, 업사이클링, 패브릭 아트 등 의류와 텍스타일 작품을 소개합니다.</p>
+    </div>
+    <div class="booth-card">
+      <div class="booth-num">05</div>
+      <span class="booth-type type-art">사진</span>
+      <div class="booth-title">포토 & 미디어아트</div>
+      <p class="booth-desc">사진, 영상, 디지털 미디어 작품들이 새로운 시각으로 세상을 담아냅니다.</p>
+    </div>
+    <div class="booth-card">
+      <div class="booth-num">06</div>
+      <span class="booth-type type-craft">아카이브</span>
+      <div class="booth-title">졸업생 특별전</div>
+      <p class="booth-desc">계원예술대학교 졸업생들의 활동을 소개하는 특별 아카이브 부스입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="section-tag">프로그램</div>
+  <h2 class="section-title">하루가 꽉 찬<br>예술의 시간</h2>
+  <div class="programs-list">
+    <div class="program-item">
+      <div class="program-time">10:00</div>
+      <div class="program-info">
+        <div class="program-name">개막식 & 라이브 드로잉 퍼포먼스</div>
+        <div class="program-detail">야외 잔디마당 · 계원예대 재학생 및 졸업생 아티스트 참여</div>
+      </div>
+      <span class="program-badge badge-main">메인</span>
+    </div>
+    <div class="program-item">
+      <div class="program-time">10:30</div>
+      <div class="program-info">
+        <div class="program-name">아트마켓 오픈</div>
+        <div class="program-detail">야외 농구장 & 잔디마당 · 30여 팀 셀러 참여</div>
+      </div>
+      <span class="program-badge badge-open">상시</span>
+    </div>
+    <div class="program-item">
+      <div class="program-time">11:00</div>
+      <div class="program-info">
+        <div class="program-name">글로벌 아트 워크숍</div>
+        <div class="program-detail">강의동 A 101호 · 해외 교류 학생과 함께하는 예술 체험 프로그램</div>
+      </div>
+      <span class="program-badge badge-workshop">워크숍</span>
+    </div>
+    <div class="program-item">
+      <div class="program-time">13:00</div>
+      <div class="program-info">
+        <div class="program-name">입학박람회 &amp; 학과 소개</div>
+        <div class="program-detail">파라다이스홀 · 5개 계열 16개 학과 소개 및 포트폴리오 상담</div>
+      </div>
+      <span class="program-badge badge-open">동시</span>
+    </div>
+    <div class="program-item">
+      <div class="program-time">14:00</div>
+      <div class="program-info">
+        <div class="program-name">쿠마 기획전 오프닝</div>
+        <div class="program-detail">갤러리 · 교내 전시 공간에서 진행되는 초청 기획 전시</div>
+      </div>
+      <span class="program-badge badge-open">전시</span>
+    </div>
+    <div class="program-item">
+      <div class="program-time">15:00</div>
+      <div class="program-info">
+        <div class="program-name">시민 참여 공예 워크숍</div>
+        <div class="program-detail">야외 체험존 · 가족 단위 참여 가능, 선착순 신청</div>
+      </div>
+      <span class="program-badge badge-workshop">워크숍</span>
+    </div>
+    <div class="program-item">
+      <div class="program-time">16:30</div>
+      <div class="program-info">
+        <div class="program-name">폐막 퍼포먼스 & 경품 추첨</div>
+        <div class="program-detail">야외 메인 스테이지 · 아트마켓 구매자 대상 경품 행사</div>
+      </div>
+      <span class="program-badge badge-main">메인</span>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICES -->
+<section id="notices">
+  <div class="notices-header">
+    <div>
+      <div class="section-tag" style="color: rgba(26,26,24,0.5);">공지사항</div>
+      <h2 class="section-title" style="color: var(--black);">알림</h2>
+    </div>
+    <a href="#" style="font-size: 13px; color: rgba(26,26,24,0.5); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px solid rgba(26,26,24,0.3); padding-bottom: 2px;">전체보기</a>
+  </div>
+  <div class="notice-list">
+    <div class="notice-item">
+      <div class="notice-dot new"></div>
+      <div class="notice-title">【2026 경기 아트 난장】 셀러 모집 공고 (예정)</div>
+      <div class="notice-date">공개 예정</div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-dot new"></div>
+      <div class="notice-title">2026 경기 아트 난장 개최 일정 확정 안내</div>
+      <div class="notice-date">2026.05.01</div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-dot old"></div>
+      <div class="notice-title">2025 경기 아트 난장 결과 보고 및 아카이브 공개</div>
+      <div class="notice-date">2025.11.20</div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-dot old"></div>
+      <div class="notice-title">2025년 행사 당일 우천 대비 장소 변경 안내</div>
+      <div class="notice-date">2025.11.07</div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-dot old"></div>
+      <div class="notice-title">2025 경기 아트 난장 아트마켓 셀러 최종 선정 결과 발표</div>
+      <div class="notice-date">2025.11.03</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div>
+    <div class="section-tag">방문안내</div>
+    <h2 class="section-title">오시는 길</h2>
+    <div class="visit-info-list">
+      <div class="visit-info-item">
+        <div class="visit-icon">📍</div>
+        <div class="visit-info-text">
+          <div class="vi-label">장소</div>
+          <div class="vi-value">경기도 의왕시 계원대학로 66<br>계원예술대학교 캠퍼스 (야외 농구장 & 잔디마당)</div>
+        </div>
+      </div>
+      <div class="visit-info-item">
+        <div class="visit-icon">🚇</div>
+        <div class="visit-info-text">
+          <div class="vi-label">지하철</div>
+          <div class="vi-value">1호선 의왕역 하차 후 택시 약 10분<br>4호선 인덕원역 하차 후 버스 이용</div>
+        </div>
+      </div>
+      <div class="visit-info-item">
+        <div class="visit-icon">🚌</div>
+        <div class="visit-info-text">
+          <div class="vi-label">버스</div>
+          <div class="vi-value">의왕시 순환버스 또는 계원예대 셔틀버스<br>(행사 당일 운행 일정 추후 공지)</div>
+        </div>
+      </div>
+      <div class="visit-info-item">
+        <div class="visit-icon">🅿️</div>
+        <div class="visit-info-text">
+          <div class="vi-label">주차</div>
+          <div class="vi-value">교내 주차장 이용 가능 (무료)<br>※ 대중교통 이용을 권장합니다</div>
+        </div>
+      </div>
+      <div class="visit-info-item">
+        <div class="visit-icon">🕙</div>
+        <div class="visit-info-text">
+          <div class="vi-label">운영시간</div>
+          <div class="vi-value">10:00 – 17:00 (입장 마감 16:30)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-placeholder">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="rgba(245,240,232,0.4)"/>
+    </svg>
+    <span>지도는 추후 업데이트 됩니다</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo">경기 아트 난장 2026</div>
+    <p>지역 예술생태계 활성화를 목표로<br>학교·지역사회·산업체가 함께 만드는<br>창의적 예술 플랫폼</p>
+  </div>
+  <div class="footer-links">
+    <div class="f-label">바로가기</div>
+    <a href="#about">축제소개</a>
+    <a href="#booths">부스소개</a>
+    <a href="#programs">프로그램</a>
+    <a href="#notices">공지사항</a>
+    <a href="#visit">방문안내</a>
+  </div>
+  <div class="footer-links">
+    <div class="f-label">주최 / 주관</div>
+    <a href="https://www.kaywon.ac.kr" target="_blank">계원예술대학교</a>
+    <a href="https://www.seoularts.ac.kr" target="_blank">서울예술대학교</a>
+    <a href="https://www.ck.ac.kr" target="_blank">청강문화산업대학교</a>
+  </div>
+  <div class="footer-links">
+    <div class="f-label">문의</div>
+    <a href="mailto:artnaanjang@kaywon.ac.kr">artnaanjang@kaywon.ac.kr</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 경기 아트 난장. 계원예술대학교 RISE사업단.</p>
+  <p>경기도 의왕시 계원대학로 66</p>
+</div>
+
+</body>
+</html>
