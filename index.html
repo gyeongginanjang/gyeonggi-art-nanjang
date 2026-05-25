@@ -100,7 +100,7 @@
 
   .hero-tag {
     display: inline-block;
-    background: var(--orange);
+    background: #e61253;
     color: white;
     font-size: 12px;
     font-weight: 500;
@@ -160,7 +160,7 @@
   }
 
   .btn-primary {
-    background: var(--orange);
+    background:#e61253;
     color: white;
     padding: 14px 32px;
     font-size: 14px;
@@ -200,7 +200,7 @@
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--orange);
+    color: #e61253;
     font-weight: 500;
     margin-bottom: 16px;
   }
@@ -253,7 +253,7 @@
   .stat-num {
     font-family: 'Black Han Sans', sans-serif;
     font-size: 52px;
-    color: var(--orange);
+    color: #e61253;
     line-height: 1;
     margin-bottom: 8px;
   }
@@ -268,62 +268,153 @@
   #booths {
     background: var(--black);
     color: var(--cream);
+    padding: 100px 0 100px 48px;
   }
 
   #booths .section-title { color: var(--cream); }
+  #booths .booths-header { padding-right: 48px; margin-bottom: 56px; }
 
-  .booths-grid {
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(255,255,255,0.08);
+  /* SLIDER */
+  .booths-slider-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .booths-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
 
   .booth-card {
     background: #222220;
-    padding: 40px 32px;
-    transition: background 0.2s;
+    padding: 48px 36px;
+    flex: 0 0 380px;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
     cursor: default;
+    transition: background 0.2s;
+    border: 1px solid rgba(255,255,255,0.04);
   }
 
-  .booth-card:hover { background: #2a2a28; }
+  .booth-card:hover { background: #2c2c2a; }
 
   .booth-num {
     font-family: 'Black Han Sans', sans-serif;
-    font-size: 48px;
-    color: rgba(255,255,255,0.08);
+    font-size: 52px;
+    color: rgba(255,255,255,0.06);
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
-
-  .booth-type {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    padding: 4px 10px;
-    border-radius: 2px;
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
-
-  .type-art { background: rgba(232,73,10,0.2); color: var(--orange-light); }
-  .type-craft { background: rgba(247,200,66,0.2); color: var(--yellow); }
-  .type-design { background: rgba(74,158,99,0.15); color: var(--green-light); }
 
   .booth-title {
     font-family: 'Black Han Sans', sans-serif;
-    font-size: 22px;
+    font-size: 26px;
     color: var(--cream);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     letter-spacing: -0.01em;
+    line-height: 1.2;
   }
 
   .booth-desc {
     font-size: 13px;
     color: rgba(245,240,232,0.5);
-    line-height: 1.8;
+    line-height: 1.85;
     font-weight: 300;
+    flex: 1;
+  }
+
+  .booth-programs {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .booth-programs-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    margin-bottom: 10px;
+  }
+
+  .booth-program-tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin: 3px 3px 3px 0;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .tag-orange { background: rgba(232,73,10,0.18); color: var(--orange-light); }
+  .tag-yellow { background: rgba(247,200,66,0.18); color: var(--yellow); }
+  .tag-green  { background: rgba(74,158,99,0.15);  color: var(--green-light); }
+  .tag-white  { background: rgba(255,255,255,0.08); color: rgba(245,240,232,0.6); }
+
+  /* Slider controls */
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-right: 48px;
+    margin-top: 40px;
+  }
+
+  .slider-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .slider-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
+  .slider-btn:disabled { opacity: 0.25; cursor: default; }
+
+  .slider-dots {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .slider-dot {
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background 0.2s, width 0.2s;
+  }
+
+  .slider-dot.active {
+    background: var(--yellow);
+    width: 36px;
+  }
+
+  .slider-count {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    #booths { padding: 70px 0 70px 24px; }
+    #booths .booths-header { padding-right: 24px; }
+    .booth-card { flex: 0 0 300px; }
+    .slider-controls { padding-right: 24px; }
   }
 
   /* PROGRAMS */
@@ -382,7 +473,7 @@
     letter-spacing: 0.05em;
   }
 
-  .badge-main { background: var(--orange); color: white; }
+  .badge-main { background:#e61253; color: white; }
   .badge-workshop { background: var(--black); color: var(--cream); }
   .badge-open { background: transparent; border: 1px solid var(--black); color: var(--black); }
 
@@ -603,14 +694,105 @@
   .hero-info { animation-delay: 0.4s; }
   .hero-cta { animation-delay: 0.5s; }
 
-  /* Responsive */
+  /* NOTICE MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,26,24,0.7);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal-box {
+    background: var(--cream);
+    max-width: 560px;
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    transform: translateY(16px);
+    transition: transform 0.25s ease;
+  }
+
+  .modal-overlay.active .modal-box {
+    transform: translateY(0);
+  }
+
+  .modal-header {
+    background: var(--black);
+    padding: 28px 32px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .modal-header-left .modal-date {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 8px;
+  }
+
+  .modal-header-left .modal-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 20px;
+    color: var(--cream);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .modal-close {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(245,240,232,0.6);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+
+  .modal-close:hover { background: rgba(255,255,255,0.1); }
+
+  .modal-body {
+    padding: 32px;
+    font-size: 15px;
+    color: #3a3a38;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  .modal-body p { margin-bottom: 16px; }
+  .modal-body p:last-child { margin-bottom: 0; }
+
+  .notice-item { cursor: pointer; }
+  .notice-title { cursor: pointer; }
+  .notice-title:hover { text-decoration: underline; text-underline-offset: 3px; }
+
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
     nav .nav-links { display: none; }
     section { padding: 70px 24px; }
     .hero { padding: 100px 24px 60px; }
     #about { grid-template-columns: 1fr; gap: 48px; }
-    .booths-grid { grid-template-columns: 1fr; }
+    .booths-track { gap: 12px; }
     .program-item { grid-template-columns: 60px 1fr; }
     .program-item .program-badge { display: none; }
     #visit { grid-template-columns: 1fr; }
@@ -700,48 +882,200 @@
 
 <!-- BOOTHS -->
 <section id="booths">
-  <div class="section-tag">부스소개</div>
-  <h2 class="section-title" style="color: var(--cream);">다양한 창작자들이<br>한 자리에</h2>
-  <p style="color: rgba(245,240,232,0.5); font-size: 15px; max-width: 480px; line-height: 1.8; font-weight: 300; margin-top: 16px;">예술·디자인·핸드메이드·일러스트·공예 등 창작 기반 셀러들이 참여합니다. 2026년 셀러 모집은 추후 공지될 예정입니다.</p>
-  <div class="booths-grid">
-    <div class="booth-card">
-      <div class="booth-num">01</div>
-      <span class="booth-type type-art">순수미술</span>
-      <div class="booth-title">드로잉 & 페인팅</div>
-      <p class="booth-desc">회화, 드로잉, 판화 등 전통적인 미술 매체부터 실험적 회화까지 다양한 작품을 만날 수 있습니다.</p>
-    </div>
-    <div class="booth-card">
-      <div class="booth-num">02</div>
-      <span class="booth-type type-design">디자인</span>
-      <div class="booth-title">그래픽 & 일러스트</div>
-      <p class="booth-desc">포스터, 인쇄물, 디지털 일러스트레이션 등 시각 디자인 작품과 굿즈를 선보입니다.</p>
-    </div>
-    <div class="booth-card">
-      <div class="booth-num">03</div>
-      <span class="booth-type type-craft">공예</span>
-      <div class="booth-title">핸드메이드 & 공예</div>
-      <p class="booth-desc">도예, 텍스타일, 주얼리, 가죽공예 등 손으로 직접 만든 개성 넘치는 작품들입니다.</p>
-    </div>
-    <div class="booth-card">
-      <div class="booth-num">04</div>
-      <span class="booth-type type-design">디자인</span>
-      <div class="booth-title">패션 & 텍스타일</div>
-      <p class="booth-desc">독립 패션 브랜드, 업사이클링, 패브릭 아트 등 의류와 텍스타일 작품을 소개합니다.</p>
-    </div>
-    <div class="booth-card">
-      <div class="booth-num">05</div>
-      <span class="booth-type type-art">사진</span>
-      <div class="booth-title">포토 & 미디어아트</div>
-      <p class="booth-desc">사진, 영상, 디지털 미디어 작품들이 새로운 시각으로 세상을 담아냅니다.</p>
-    </div>
-    <div class="booth-card">
-      <div class="booth-num">06</div>
-      <span class="booth-type type-craft">아카이브</span>
-      <div class="booth-title">졸업생 특별전</div>
-      <p class="booth-desc">계원예술대학교 졸업생들의 활동을 소개하는 특별 아카이브 부스입니다.</p>
+  <div class="booths-header">
+    <div class="section-tag">부스소개</div>
+    <h2 class="section-title">전시과 부스</h2>
+    <p style="color: rgba(245,240,232,0.5); font-size: 15px; max-width: 520px; line-height: 1.8; font-weight: 300;">계원예술대학교 전시과 학생들이 직접 기획·운영하는 6개의 부스를 만나보세요.</p>
+  </div>
+
+  <div class="booths-slider-wrap">
+    <div class="booths-track" id="boothsTrack">
+
+      <div class="booth-card">
+        <div class="booth-num">01</div>
+        <div class="booth-title">달이다<br>다리다</div>
+        <p class="booth-desc">달을 닮은, 다리를 잇는 — 빛과 연결을 주제로 한 설치 및 오브제 작업을 선보입니다. 일상의 사물이 예술이 되는 순간을 경험해보세요.</p>
+        <div class="booth-programs">
+          <div class="booth-programs-label">프로그램</div>
+          <span class="booth-program-tag tag-orange">설치 관람</span>
+          <span class="booth-program-tag tag-white">오브제 판매</span>
+        </div>
+      </div>
+
+      <div class="booth-card">
+        <div class="booth-num">02</div>
+        <div class="booth-title">멈춤의<br>삼각형</div>
+        <p class="booth-desc">정지된 순간 속의 기하학 — 삼각형이라는 도형을 통해 균형, 긴장, 정적의 감각을 탐구합니다. 평면 회화와 입체 작품이 함께 전시됩니다.</p>
+        <div class="booth-programs">
+          <div class="booth-programs-label">프로그램</div>
+          <span class="booth-program-tag tag-yellow">드로잉 체험</span>
+          <span class="booth-program-tag tag-white">작품 전시</span>
+        </div>
+      </div>
+
+      <div class="booth-card">
+        <div class="booth-num">03</div>
+        <div class="booth-title">책 한 알<br>Rx Page</div>
+        <p class="booth-desc">책을 처방하는 부스 — 당신의 감정과 상태에 맞는 책과 문장을 처방해 드립니다. 아티스트 북과 독립출판물도 함께 소개합니다.</p>
+        <div class="booth-programs">
+          <div class="booth-programs-label">프로그램</div>
+          <span class="booth-program-tag tag-green">책 처방 상담</span>
+          <span class="booth-program-tag tag-white">독립출판 판매</span>
+          <span class="booth-program-tag tag-white">아티스트 북</span>
+        </div>
+      </div>
+
+      <div class="booth-card">
+        <div class="booth-num">04</div>
+        <div class="booth-title">한 올,<br>한 땀</div>
+        <p class="booth-desc">실 한 올, 바늘 한 땀에서 시작하는 섬유 예술 — 자수, 위빙, 니팅을 통해 완성된 텍스타일 아트와 소품을 선보입니다.</p>
+        <div class="booth-programs">
+          <div class="booth-programs-label">프로그램</div>
+          <span class="booth-program-tag tag-orange">자수 워크숍</span>
+          <span class="booth-program-tag tag-white">핸드메이드 판매</span>
+        </div>
+      </div>
+
+      <div class="booth-card">
+        <div class="booth-num">05</div>
+        <div class="booth-title">허브리즈</div>
+        <p class="booth-desc">허브와 바람처럼 — 식물, 자연 향기, 보타니컬 아트를 결합한 감각적 공간입니다. 자연 소재를 활용한 공예 체험도 운영됩니다.</p>
+        <div class="booth-programs">
+          <div class="booth-programs-label">프로그램</div>
+          <span class="booth-program-tag tag-green">보타니컬 체험</span>
+          <span class="booth-program-tag tag-white">식물 아트 전시</span>
+          <span class="booth-program-tag tag-yellow">향기 소품 판매</span>
+        </div>
+      </div>
+
+      <div class="booth-card">
+        <div class="booth-num">06</div>
+        <div class="booth-title">off mode</div>
+        <p class="booth-desc">꺼진 상태에서 보이는 것들 — 디지털 피로와 오프라인의 감각을 주제로, 아날로그 드로잉과 프린트 작업을 중심으로 전시·판매합니다.</p>
+        <div class="booth-programs">
+          <div class="booth-programs-label">프로그램</div>
+          <span class="booth-program-tag tag-white">리소 프린트</span>
+          <span class="booth-program-tag tag-orange">드로잉 굿즈</span>
+          <span class="booth-program-tag tag-white">제스처 드로잉</span>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <div class="slider-controls">
+    <button class="slider-btn" id="prevBtn" onclick="moveSlider(-1)">&#8592;</button>
+    <button class="slider-btn" id="nextBtn" onclick="moveSlider(1)">&#8594;</button>
+    <div class="slider-dots" id="sliderDots"></div>
+    <span class="slider-count" id="sliderCount">1 / 6</span>
+  </div>
 </section>
+
+<script>
+  (function() {
+    var track = document.getElementById('boothsTrack');
+    var dotsWrap = document.getElementById('sliderDots');
+    var countEl = document.getElementById('sliderCount');
+    var originalCards = Array.from(track.querySelectorAll('.booth-card'));
+    var total = originalCards.length;
+    var GAP = 16;
+    var current = 0;
+    var isJumping = false;
+
+    // 구조: [6클론][1][2][3][4][5][6][1클론]
+    // 앞에 마지막 카드 클론 1개, 뒤에 첫 번째 카드 클론 1개
+    var cloneLast = originalCards[total - 1].cloneNode(true);
+    var cloneFirst = originalCards[0].cloneNode(true);
+    track.insertBefore(cloneLast, track.firstChild);
+    track.appendChild(cloneFirst);
+
+    // 실제 카드는 인덱스 1번부터 시작 (앞에 클론 1개)
+    var offset = 1;
+
+    function getCardWidth() {
+      return originalCards[0].offsetWidth + GAP;
+    }
+
+    function setTransform(idx, animate) {
+      if (!animate) track.style.transition = 'none';
+      else track.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+      track.style.transform = 'translateX(-' + ((offset + idx) * getCardWidth()) + 'px)';
+    }
+
+    // 초기 위치
+    setTransform(0, false);
+
+    // 도트 생성
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = (function(idx) { return function() { goTo(idx); }; })(i);
+      dotsWrap.appendChild(dot);
+    }
+
+    function updateUI() {
+      countEl.textContent = (current + 1) + ' / ' + total;
+      dotsWrap.querySelectorAll('.slider-dot').forEach(function(d, i) {
+        d.className = 'slider-dot' + (i === current ? ' active' : '');
+      });
+    }
+
+    function goTo(idx) {
+      current = idx;
+      setTransform(current, true);
+      updateUI();
+    }
+
+    track.addEventListener('transitionend', function() {
+      if (isJumping) return;
+      // 마지막(6) 다음 클론(1클론)에 도달 → 진짜 1번으로 순간이동
+      if (current >= total) {
+        isJumping = true;
+        current = 0;
+        setTransform(current, false);
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            track.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+            isJumping = false;
+          });
+        });
+        updateUI();
+      }
+      // 1번 앞 클론(6클론)에 도달 → 진짜 6번으로 순간이동
+      if (current < 0) {
+        isJumping = true;
+        current = total - 1;
+        setTransform(current, false);
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            track.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+            isJumping = false;
+          });
+        });
+        updateUI();
+      }
+    });
+
+    window.moveSlider = function(dir) {
+      current = current + dir;
+      setTransform(current, true);
+      // UI는 범위 내 값으로만 표시
+      var displayIdx = ((current % total) + total) % total;
+      countEl.textContent = (displayIdx + 1) + ' / ' + total;
+      dotsWrap.querySelectorAll('.slider-dot').forEach(function(d, i) {
+        d.className = 'slider-dot' + (i === displayIdx ? ' active' : '');
+      });
+    };
+
+    // 터치 스와이프
+    var startX = 0;
+    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', function(e) {
+      var diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) moveSlider(diff > 0 ? 1 : -1);
+    }, {passive:true});
+  })();
+</script>
 
 <!-- PROGRAMS -->
 <section id="programs">
@@ -817,33 +1151,99 @@
     <a href="#" style="font-size: 13px; color: rgba(26,26,24,0.5); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px solid rgba(26,26,24,0.3); padding-bottom: 2px;">전체보기</a>
   </div>
   <div class="notice-list">
-    <div class="notice-item">
+    <div class="notice-item" onclick="openNotice(0)">
       <div class="notice-dot new"></div>
       <div class="notice-title">【2026 경기 아트 난장】 셀러 모집 공고 (예정)</div>
       <div class="notice-date">공개 예정</div>
     </div>
-    <div class="notice-item">
+    <div class="notice-item" onclick="openNotice(1)">
       <div class="notice-dot new"></div>
       <div class="notice-title">2026 경기 아트 난장 개최 일정 확정 안내</div>
       <div class="notice-date">2026.05.01</div>
     </div>
-    <div class="notice-item">
+    <div class="notice-item" onclick="openNotice(2)">
       <div class="notice-dot old"></div>
       <div class="notice-title">2025 경기 아트 난장 결과 보고 및 아카이브 공개</div>
       <div class="notice-date">2025.11.20</div>
     </div>
-    <div class="notice-item">
+    <div class="notice-item" onclick="openNotice(3)">
       <div class="notice-dot old"></div>
       <div class="notice-title">2025년 행사 당일 우천 대비 장소 변경 안내</div>
       <div class="notice-date">2025.11.07</div>
     </div>
-    <div class="notice-item">
+    <div class="notice-item" onclick="openNotice(4)">
       <div class="notice-dot old"></div>
       <div class="notice-title">2025 경기 아트 난장 아트마켓 셀러 최종 선정 결과 발표</div>
       <div class="notice-date">2025.11.03</div>
     </div>
   </div>
 </section>
+
+<!-- NOTICE MODAL -->
+<div class="modal-overlay" id="noticeModal" onclick="closeNoticeOnOverlay(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-date" id="modalDate"></div>
+        <div class="modal-title" id="modalTitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeNotice()">&#215;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  var notices = [
+    {
+      title: '【2026 경기 아트 난장】 셀러 모집 공고 (예정)',
+      date: '공개 예정',
+      body: '<p>2026 경기 아트 난장 아트마켓 셀러 모집 공고가 곧 오픈될 예정입니다.</p><p>예술·디자인·핸드메이드·공예·일러스트 등 창작 기반 셀러라면 누구든 지원 가능합니다. 공고 오픈 시 본 페이지 공지사항을 통해 안내드릴 예정이오니 많은 관심 부탁드립니다.</p><p>문의: artnaanjang@kaywon.ac.kr</p>'
+    },
+    {
+      title: '2026 경기 아트 난장 개최 일정 확정 안내',
+      date: '2026.05.01',
+      body: '<p>2026 경기 아트 난장의 개최 일정이 확정되었습니다.</p><p>행사는 2026년 11월 중 경기도 의왕시 롯데프리미엄아울렛에서 진행될 예정이며, 구체적인 날짜 및 프로그램 세부 사항은 추후 공지를 통해 안내드리겠습니다.</p><p>계원예술대학교·서울예술대학교·청강문화산업대학교 컨소시엄이 함께 준비하는 2026년 난장에 많은 기대 부탁드립니다.</p>'
+    },
+    {
+      title: '2025 경기 아트 난장 결과 보고 및 아카이브 공개',
+      date: '2025.11.20',
+      body: '<p>2025년 11월 8일(토) 성황리에 마무리된 경기 아트 난장의 결과 보고 및 아카이브가 공개되었습니다.</p><p>당일 방문객 약 2,000여 명이 참여하였으며, 30여 팀의 셀러와 다양한 체험 프로그램이 함께했습니다. 라이브 드로잉 퍼포먼스, 글로벌 워크숍, 입학박람회 등 행사 전반의 사진 및 영상 아카이브는 계원예대 공식 채널에서 확인하실 수 있습니다.</p><p>참여해주신 모든 분들께 감사드립니다.</p>'
+    },
+    {
+      title: '2025년 행사 당일 우천 대비 장소 변경 안내',
+      date: '2025.11.07',
+      body: '<p>안녕하세요, 경기 아트 난장 운영팀입니다.</p><p>11월 8일(토) 행사 당일 우천이 예보됨에 따라, 일부 야외 프로그램의 장소가 실내로 변경될 수 있습니다.</p><p>아트마켓 일부 부스는 야외 농구장에서 파라다이스홀 로비로 이동할 예정이며, 당일 오전 최종 안내를 통해 변경 사항을 공유드리겠습니다. 방문 전 본 공지사항을 다시 확인해 주시기 바랍니다.</p>'
+    },
+    {
+      title: '2025 경기 아트 난장 아트마켓 셀러 최종 선정 결과 발표',
+      date: '2025.11.03',
+      body: '<p>2025 경기 아트 난장 아트마켓 셀러 최종 선정 결과를 발표합니다.</p><p>총 120팀 지원 중 30팀이 최종 선정되었습니다. 선정된 팀에는 개별 이메일로 안내가 발송되었으며, 미선정 팀에도 동일하게 결과 안내가 전달되었습니다.</p><p>당일 부스 배치 및 입금 관련 세부 안내는 11월 5일까지 별도 메일로 발송될 예정입니다. 많은 관심과 지원에 감사드립니다.</p>'
+    }
+  ];
+
+  function openNotice(idx) {
+    var n = notices[idx];
+    document.getElementById('modalDate').textContent = n.date;
+    document.getElementById('modalTitle').textContent = n.title;
+    document.getElementById('modalBody').innerHTML = n.body;
+    document.getElementById('noticeModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNotice() {
+    document.getElementById('noticeModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function closeNoticeOnOverlay(e) {
+    if (e.target === document.getElementById('noticeModal')) closeNotice();
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNotice();
+  });
+</script>
 
 <!-- VISIT -->
 <section id="visit">
@@ -854,7 +1254,7 @@
       <div class="visit-info-item">
         <div class="visit-icon">📍</div>
         <div class="visit-info-text">
-          <div class="vi-label">장소</div>
+          <div class="vi-label"s>장소</div>
           <div class="vi-value">경기도 의왕시 바라산로 1<br>의왕 롯데프리미엄 아울렛</div>
         </div>
       </div>
